@@ -1,8 +1,17 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux'
+import { addFav } from '../favSlice';
 
 const DetailScreen = (props) => {
+
+    const [fav,setfav] = useState({})
+    const dispatch = useDispatch()
+
+    function handleSubmit() {
+        dispatch(addFav(props.route.params))
+    }
 
     console.log(props);
   return (
@@ -20,6 +29,11 @@ const DetailScreen = (props) => {
       <Text style={{color:'white',fontSize:18, textAlign:'justify',marginHorizontal:15}}>{props.route.params.overview}</Text>
   
     </View>
+    <TouchableOpacity
+    onPress={handleSubmit}
+    >
+        <Text style = {{color:'white'}}>Ajouter aux favoris</Text>
+    </TouchableOpacity>
     </ScrollView>
   )
 }
