@@ -9,6 +9,8 @@ import DetailScreen from '../screens/DetailScreen';
 const Stack = createStackNavigator()
 
 const StackNav = () => {
+
+    
   return (
     <NavigationContainer>
     <Stack.Navigator initialRouteName='Home' >     
